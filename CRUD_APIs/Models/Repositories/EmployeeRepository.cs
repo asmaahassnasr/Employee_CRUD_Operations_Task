@@ -50,14 +50,20 @@ namespace CRUD_APIs.Models.Repositories
             var result = await appDbContext.Employees.FirstOrDefaultAsync(e => e.EmpId == employee.EmpId);
             if(result != null)
             {
-                result.CountryId = employee.CountryId;
                 result.EmpBirthDate = employee.EmpBirthDate;
                 result.EmpEmail = employee.EmpEmail;
                 result.EmpName = employee.EmpName;
                 result.EmpPhoto = employee.EmpPhoto;
                 result.EmpSalary = employee.EmpSalary;
                 result.EmpTitle = employee.EmpTitle;
-
+                if(employee.CountryId != 0)
+                {
+                    result.CountryId = employee.CountryId;
+                }
+                else if(employee.Country != null)
+                {
+                    result.CountryId = employee.Country.CountryId;
+                }
                 await appDbContext.SaveChangesAsync();
                 return result;
             }
