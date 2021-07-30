@@ -35,5 +35,43 @@ namespace CRUD_APIs.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, "Error Retreiving data from the server");
             }
         }
+    
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<Employee>> GetEmployeeById(int id)
+        {
+            try
+            {
+                var result =await employeeRepository.GetEmployeeById(id);
+                if(result == null)
+                {
+                    return NotFound();
+                }
+                return result;
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Error Retreiving data from the server");
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
+        {
+            try
+            {
+                if(employee == null)
+                         return BadRequest();
+                
+               var newEmp = await employeeRepository.AddEmployee(employee);
+               return CreatedAtAction(nameof(GetEmployeeById), new { id = newEmp.EmpId }, newEmp);
+                
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Errorr Creating new Employee record");
+
+            }
+        }
     }
 }

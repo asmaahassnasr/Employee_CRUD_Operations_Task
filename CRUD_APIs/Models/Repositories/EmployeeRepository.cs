@@ -16,9 +16,13 @@ namespace CRUD_APIs.Models.Repositories
         }
         public async Task<Employee> AddEmployee(Employee employee)
         {
-            var result = await appDbContext.Employees.AddAsync(employee);
-            await appDbContext.SaveChangesAsync();
-            return result.Entity;
+            if(employee.Country != null)
+            {
+                appDbContext.Entry(employee.Country).State = EntityState.Unchanged;
+            }
+                var result = await appDbContext.Employees.AddAsync(employee);
+                await appDbContext.SaveChangesAsync();
+                return result.Entity;
         }
 
         public async Task DeleteEmployee(int id)
