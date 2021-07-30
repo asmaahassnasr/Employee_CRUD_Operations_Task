@@ -73,5 +73,28 @@ namespace CRUD_APIs.Controllers
 
             }
         }
+
+        [HttpPut("{id:int}")]
+        public async Task<ActionResult<Employee>> UpdateEmployee(int id,Employee employee)
+        {
+            try
+            {
+                if (id != employee.EmpId)
+                    return BadRequest("Employee Id Dismatch");
+
+                var employeeToUpdate = await employeeRepository.GetEmployeeById(id);
+                if (employeeToUpdate == null)
+                    return NotFound($"Employee with Id {id} not found");
+
+
+                return await employeeRepository.UpdateEmployee(employee);
+
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Errorr Updating Employee record");
+
+            }
+        }
     }
 }
