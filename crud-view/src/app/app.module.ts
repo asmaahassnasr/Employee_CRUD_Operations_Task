@@ -9,7 +9,7 @@ import { AddEditComponent } from './country/add-edit/add-edit.component';
 import { EmployeeComponent } from './employee/employee.component';
 import { ShowEmpComponent } from './employee/show-emp/show-emp.component';
 import { AddEditEmpComponent } from './employee/add-edit-emp/add-edit-emp.component';
-
+import { SharedService } from './shared.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +24,7 @@ import { AddEditEmpComponent } from './employee/add-edit-emp/add-edit-emp.compon
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
