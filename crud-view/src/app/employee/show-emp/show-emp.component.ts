@@ -36,4 +36,8 @@ export class ShowEmpComponent implements OnInit {
     this.ActivateAddEditEmpComp=true;
   }
 
+  closeClick(){
+    this.ActivateAddEditEmpComp=false;
+    this.refreshDbList();
+  }
 }

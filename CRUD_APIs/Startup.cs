@@ -43,6 +43,7 @@ namespace CRUD_APIs
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStaticFiles();
             app.UseHttpsRedirection();
 
             app.UseRouting();

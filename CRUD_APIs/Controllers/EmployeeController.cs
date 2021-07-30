@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace CRUD_APIs.Controllers
 {
@@ -14,10 +16,13 @@ namespace CRUD_APIs.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository employeeRepository;
+        private readonly IHostingEnvironment _env;
 
-        public EmployeesController(IEmployeeRepository _employeeRepository)
+
+        public EmployeesController(IEmployeeRepository _employeeRepository , IHostingEnvironment env)
         {
             employeeRepository = _employeeRepository;
+            _env = env;
         }
 
         [HttpGet]
@@ -56,14 +61,26 @@ namespace CRUD_APIs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee)
+        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee )
         {
             try
             {
+                
                 if(employee == null)
                          return BadRequest();
-                
-               var newEmp = await employeeRepository.AddEmployee(employee);
+                //if(employee.EmpPhoto != null)
+                //{
+                    //Checks for Image exctension
+                    //if (!(employee.EmpPhoto.EndsWith(".png") || employee.EmpPhoto.EndsWith(".jpg") || employee.EmpPhoto.EndsWith(".jpeg")))
+                    //    return BadRequest("Image limit to png and jpeg/jpg ");
+
+                    ////Creat image ptah to upload photo in wwwroot/images
+                    //string pathImg = Path.Combine(_env.WebRootPath, "images");
+                    //string fullPath = Path.Combine(pathImg,employee.EmpPhoto);
+                    //f.CopyTo(new FileStream(fullPath, FileMode.Append));
+               // }
+
+                var newEmp = await employeeRepository.AddEmployee(employee);
                return CreatedAtAction(nameof(GetEmployeeById), new { id = newEmp.EmpId }, newEmp);
                 
             }
