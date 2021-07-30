@@ -5,14 +5,19 @@
         <th>Name</th>
         <th>Title</th>
         <th>Email</th>
+        <th>Options</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor= "let dataItem of empList">
-        <td>{{dataItem.EmpId}}</td>
-        <td>{{dataItem.EmpName}}</td>
-        <td>{{dataItem.EmpTitle}}</td>
-        <td>{{dataItem.EmpEmail}}</td>
+        <td>{{dataItem.empId}}</td>
+        <td>{{dataItem.empName}}</td>
+        <td>{{dataItem.empTitle}}</td>
+        <td>{{dataItem.empEmail}}</td>
+        <td>
+          <button type="button" class="btn btn-light mr-1" >Edit</button>
+          <button type="button" class="btn btn-light mr-1" >Delete</button>
+        </td>
       </tr>
     </tbody>
   </table>
