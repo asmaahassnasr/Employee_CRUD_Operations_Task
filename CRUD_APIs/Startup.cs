@@ -1,4 +1,5 @@
 using CRUD_APIs.Models;
+using CRUD_APIs.Models.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,6 +31,8 @@ namespace CRUD_APIs
             services.AddControllers();
             services.AddDbContext<AppDbContext>(options => 
             options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
