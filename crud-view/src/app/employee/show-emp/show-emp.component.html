@@ -21,7 +21,7 @@ data-toggle="modal" data-target="#exampleModal"
         </button>
       </div>
       <div class="modal-body">
-        <app-add-edit-emp *ngIf="ActivateAddEditEmpComp"></app-add-edit-emp>
+        <app-add-edit-emp [emp]="emp" *ngIf="ActivateAddEditEmpComp"></app-add-edit-emp>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -49,7 +49,10 @@ data-toggle="modal" data-target="#exampleModal"
         <td>{{dataItem.empTitle}}</td>
         <td>{{dataItem.empEmail}}</td>
         <td>
-          <button type="button" class="btn btn-light mr-1" >Edit</button>
+          <button type="button" class="btn btn-light mr-1" 
+          data-toggle="modal" data-target="#exampleModal"
+          (click)= "editClick(dataItem)" data-backdrop="static" data-keyboard="false"
+          >Edit</button>
           <button type="button" class="btn btn-light mr-1" >Delete</button>
         </td>
       </tr>

@@ -29,13 +29,16 @@ export class ShowEmpComponent implements OnInit {
       empId:0,
       empName:"",
       empTitle:"",
-      empEmail:"",
-      countryId:1
+      empEmail:""
     }
     this.ModalTtitle="Add Department";
     this.ActivateAddEditEmpComp=true;
   }
-
+editClick(item:any){
+  this.emp=item;
+  this.ModalTtitle="Edit Employee";
+  this.ActivateAddEditEmpComp=true;
+}
   closeClick(){
     this.ActivateAddEditEmpComp=false;
     this.refreshDbList();
