@@ -11,6 +11,9 @@ export class ShowEmpComponent implements OnInit {
 
   empList:any=[];
 
+  ModalTtitle:string="";
+  emp:any;
+  ActivateAddEditEmpComp:boolean=false;
 
   ngOnInit(): void {
     this.refreshDbList();
@@ -19,6 +22,18 @@ export class ShowEmpComponent implements OnInit {
     this.service.getEmployeeList().subscribe(data => {
       this.empList=data;
     });
+  }
+
+  addClick(){
+    this.emp={
+      empId:0,
+      empName:"",
+      empTitle:"",
+      empEmail:"",
+      countryId:1
+    }
+    this.ModalTtitle="Add Department";
+    this.ActivateAddEditEmpComp=true;
   }
 
 }
