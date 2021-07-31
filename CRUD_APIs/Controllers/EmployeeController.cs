@@ -128,7 +128,7 @@ namespace CRUD_APIs.Controllers
                 if (employeeToDelet == null)
                     return NotFound($"Employee with Id {id} not found");
 
-                DeletImage(employeeToDelet.EmpPhoto);
+                     DeletImage(employeeToDelet.EmpPhoto);
 
                  await employeeRepository.DeleteEmployee(id);
 

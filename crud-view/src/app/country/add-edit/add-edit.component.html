@@ -1,1 +1,13 @@
-<p>add-edit works!</p>
+<div class="form forup row">
+    <label class="col-sm-2 col-form-label"> Countr Name </label>
+    <div class="col-sm-10">
+        <input class="form-control" type="text" [(ngModel)]="CountryName" placeholder="Country Name"> 
+    </div>
+    <label class="col-sm-2 col-form-label"> Country Title </label>
+    <div class="col-sm-10">
+        <input class="form-control" type="text" [(ngModel)]="CountryCode" placeholder="Country Code"> 
+    </div>
+</div>
+<button class="btn btn-primary" (click)="addCountry()"> 
+    ADD
+</button>
