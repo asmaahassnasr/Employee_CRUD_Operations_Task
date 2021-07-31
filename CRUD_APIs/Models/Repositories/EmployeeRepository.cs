@@ -45,6 +45,16 @@ namespace CRUD_APIs.Models.Repositories
             return await appDbContext.Employees.ToListAsync();   
         }
 
+        public async Task<IEnumerable<Employee>> Search(string name)
+        {
+            IQueryable<Employee> query = appDbContext.Employees;
+            if (!string.IsNullOrEmpty(name))
+            {
+                query = query.Where(e => e.EmpName.Contains(name));
+            }
+            return await query.ToListAsync();
+        }
+
         public async Task<Employee> UpdateEmployee(Employee employee)
         {
             var result = await appDbContext.Employees.FirstOrDefaultAsync(e => e.EmpId == employee.EmpId);

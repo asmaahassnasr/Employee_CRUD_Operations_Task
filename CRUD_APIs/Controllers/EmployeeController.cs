@@ -141,6 +141,25 @@ namespace CRUD_APIs.Controllers
             }
         }
 
+        [HttpGet("{search}")]
+        public async Task<ActionResult<IEnumerable<Employee>>> Search (string name)
+        {
+            try
+            {
+                var result = await employeeRepository.Search(name);
+                if (result.Any())
+                {
+                    return Ok(result);
+                }
+                return NotFound("No Employees matching your search Query");
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Errorr Deleting Employee record");
+
+            }
+        }
+
         [NonAction]
         public async Task<string> SaveImage(IFormFile imageFile)
         {

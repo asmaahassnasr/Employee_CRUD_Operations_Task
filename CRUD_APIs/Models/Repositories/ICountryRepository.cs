@@ -9,5 +9,7 @@ namespace CRUD_APIs.Models.Repositories
     {
         Task<IEnumerable<Country>> GetCountries();
         Task<Country> GetCountryById(int id);
+        Task<Country> AddCountry(Country country);
+
     }
 }

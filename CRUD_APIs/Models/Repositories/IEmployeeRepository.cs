@@ -7,6 +7,7 @@ namespace CRUD_APIs.Models.Repositories
 {
   public  interface IEmployeeRepository
     {
+        Task<IEnumerable<Employee>> Search(string name);
         Task<IEnumerable<Employee>> GetEmployees();
         Task<Employee> GetEmployeeById(int id);
         Task<Employee> AddEmployee(Employee employee);
