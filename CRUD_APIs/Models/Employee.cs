@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -13,19 +14,24 @@ namespace CRUD_APIs.Models
         public int EmpId { get; set; }
         [Required]
         [StringLength(50)]
-        [Column(TypeName = "nvarchar (50)")]
+        [Column(TypeName = "nvarchar(50)")]
         public string EmpName { get; set; }
         [Required]
         [StringLength(50)]
-        [Column(TypeName = "nvarchar (50)")]
+        [Column(TypeName = "nvarchar(50)")]
         public string EmpTitle { get; set; }
         [Required]
         [EmailAddress]
         [StringLength(50)]
         [Column(TypeName = "nvarchar(50)")]
         public string EmpEmail { get; set; }
-        [Column(TypeName = "varbinary(max)")]
+
+        [Column(TypeName = "nvarchar(100)")]
         public string EmpPhoto { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+        [NotMapped]
+        public string ImageSrc { get; set; }
 
         public double EmpSalary { get; set; }
         [DataType(DataType.Date)]

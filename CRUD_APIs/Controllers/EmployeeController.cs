@@ -16,10 +16,10 @@ namespace CRUD_APIs.Controllers
     public class EmployeesController : ControllerBase
     {
         private readonly IEmployeeRepository employeeRepository;
-        private readonly IHostingEnvironment _env;
+        private readonly IWebHostEnvironment _env;
 
 
-        public EmployeesController(IEmployeeRepository _employeeRepository , IHostingEnvironment env)
+        public EmployeesController(IEmployeeRepository _employeeRepository , IWebHostEnvironment env)
         {
             employeeRepository = _employeeRepository;
             _env = env;
@@ -61,24 +61,20 @@ namespace CRUD_APIs.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Employee>> CreateEmployee(Employee employee )
+        public async Task<ActionResult<Employee>> CreateEmployee([FromForm] Employee employee )
         {
             try
             {
                 
                 if(employee == null)
                          return BadRequest();
-                //if(employee.EmpPhoto != null)
-                //{
-                    //Checks for Image exctension
-                    //if (!(employee.EmpPhoto.EndsWith(".png") || employee.EmpPhoto.EndsWith(".jpg") || employee.EmpPhoto.EndsWith(".jpeg")))
-                    //    return BadRequest("Image limit to png and jpeg/jpg ");
 
-                    ////Creat image ptah to upload photo in wwwroot/images
-                    //string pathImg = Path.Combine(_env.WebRootPath, "images");
-                    //string fullPath = Path.Combine(pathImg,employee.EmpPhoto);
-                    //f.CopyTo(new FileStream(fullPath, FileMode.Append));
-               // }
+                if(employee.ImageFile !=null)
+                    employee.EmpPhoto = await SaveImage(employee.ImageFile);
+
+                if (   !((employee.EmpPhoto.ToUpper().EndsWith(".PNG")) || (employee.EmpPhoto.ToUpper().EndsWith(".JPG")) || (employee.EmpPhoto.ToUpper().EndsWith(".JPEG"))))
+                      return BadRequest("Image Must be .png or .jpg/jpeg");
+
 
                 var newEmp = await employeeRepository.AddEmployee(employee);
                return CreatedAtAction(nameof(GetEmployeeById), new { id = newEmp.EmpId }, newEmp);
@@ -92,7 +88,7 @@ namespace CRUD_APIs.Controllers
         }
 
         [HttpPut("{id:int}")]
-        public async Task<ActionResult<Employee>> UpdateEmployee(int id,Employee employee)
+        public async Task<ActionResult<Employee>> UpdateEmployee([FromForm] Employee employee , int id)
         {
             try
             {
@@ -100,9 +96,17 @@ namespace CRUD_APIs.Controllers
                     return BadRequest("Employee Id Dismatch");
 
                 var employeeToUpdate = await employeeRepository.GetEmployeeById(id);
+               
+
                 if (employeeToUpdate == null)
                     return NotFound($"Employee with Id {id} not found");
 
+                if (employee.ImageFile != null)
+                {
+                    DeletImage(employeeToUpdate.EmpPhoto);
+                    employee.EmpPhoto = await SaveImage(employee.ImageFile);
+                    employeeToUpdate.EmpPhoto = employee.EmpPhoto;
+                }
 
                 return await employeeRepository.UpdateEmployee(employee);
 
@@ -120,17 +124,46 @@ namespace CRUD_APIs.Controllers
             try
             {
                 var employeeToDelet = await employeeRepository.GetEmployeeById(id);
+
                 if (employeeToDelet == null)
                     return NotFound($"Employee with Id {id} not found");
 
+                DeletImage(employeeToDelet.EmpPhoto);
 
                  await employeeRepository.DeleteEmployee(id);
+
                 return Ok($"Employee with Id {id} Deleted");
             }
             catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Errorr Deleting Employee record");
 
+            }
+        }
+
+        [NonAction]
+        public async Task<string> SaveImage(IFormFile imageFile)
+        {
+            string ImageName = new string(Path.GetFileNameWithoutExtension(imageFile.FileName)
+                .Take(10).ToArray()).Replace(" ","-");
+
+            ImageName = ImageName + DateTime.Now.ToString("yymmssff")+Path.GetExtension(imageFile.FileName);
+
+            var ImagePath = Path.Combine(_env.ContentRootPath, "Images",ImageName);
+
+            using (var FileStream = new FileStream(ImagePath,FileMode.Create))
+            {
+                await imageFile.CopyToAsync(FileStream);
+            }
+            return ImageName;
+        }
+        [NonAction]
+        public void DeletImage(string ImageName)
+        {
+            var ImagePath = Path.Combine(_env.ContentRootPath, "Images", ImageName);
+            if(System.IO.File.Exists(ImagePath))
+            {
+                System.IO.File.Delete(ImagePath);
             }
         }
     }

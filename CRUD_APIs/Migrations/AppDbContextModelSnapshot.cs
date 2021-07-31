@@ -61,18 +61,18 @@ namespace CRUD_APIs.Migrations
 
                     b.Property<string>("EmpName")
                         .IsRequired()
-                        .HasColumnType("nvarchar (50)")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
-                    b.Property<byte[]>("EmpPhoto")
-                        .HasColumnType("varbinary(max)");
+                    b.Property<string>("EmpPhoto")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<double>("EmpSalary")
                         .HasColumnType("float");
 
                     b.Property<string>("EmpTitle")
                         .IsRequired()
-                        .HasColumnType("nvarchar (50)")
+                        .HasColumnType("nvarchar(50)")
                         .HasMaxLength(50);
 
                     b.HasKey("EmpId");
