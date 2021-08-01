@@ -1,8 +1,10 @@
-﻿using System;
+﻿using CRUD_APIs.Models.Repositories;
+using System;
 
 namespace UnitTest
 {
-    public class Class1
+    public class CountryTest
     {
+        CountryRepository countryRepository;
     }
 }
