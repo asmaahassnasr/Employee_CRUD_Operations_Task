@@ -19,5 +19,10 @@ namespace CRUD_APIs.Models
         [StringLength(2)]
         [Column(TypeName = "nvarchar (2)")]
         public string CountryCode { get; set; }
+
+        public object Should()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

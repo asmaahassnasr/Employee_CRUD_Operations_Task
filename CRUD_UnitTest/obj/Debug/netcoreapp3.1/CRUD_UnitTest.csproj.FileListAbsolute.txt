@@ -121,3 +121,4 @@ E:\Employee_CRUD_Operations_Task\CRUD_UnitTest\obj\Debug\netcoreapp3.1\CRUD_Unit
 E:\Employee_CRUD_Operations_Task\CRUD_UnitTest\obj\Debug\netcoreapp3.1\CRUD_UnitTest.dll
 E:\Employee_CRUD_Operations_Task\CRUD_UnitTest\obj\Debug\netcoreapp3.1\CRUD_UnitTest.pdb
 E:\Employee_CRUD_Operations_Task\CRUD_UnitTest\obj\Debug\netcoreapp3.1\CRUD_UnitTest.genruntimeconfig.cache
+E:\Employee_CRUD_Operations_Task\CRUD_UnitTest\bin\Debug\netcoreapp3.1\Moq.AutoMock.dll

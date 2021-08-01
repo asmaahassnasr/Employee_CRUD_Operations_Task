@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6ALbSrjYB7rugZU801AW0sd2bqX1nBYtRrh5B60n4SkEumhfAaJ2vjenohFIyLZfqv+Z1NyrIkz4S2xfqOC8cA==",
+  "dgSpecHash": "MHHWac4Ug0DrKh1K/z8aTBy22WQRHab7Tp/sQCQA04zE92rEe/GhQG5nz+dttumXZCeoIpiRVfEhV/Gq7CKiEA==",
   "success": true,
   "projectFilePath": "E:\\Employee_CRUD_Operations_Task\\CRUD_UnitTest\\CRUD_UnitTest.csproj",
   "expectedPackageFiles": [
@@ -40,6 +40,7 @@
     "C:\\Users\\M.C.C\\.nuget\\packages\\microsoft.testplatform.testhost\\16.10.0\\microsoft.testplatform.testhost.16.10.0.nupkg.sha512",
     "C:\\Users\\M.C.C\\.nuget\\packages\\microsoft.win32.registry\\4.5.0\\microsoft.win32.registry.4.5.0.nupkg.sha512",
     "C:\\Users\\M.C.C\\.nuget\\packages\\moq\\4.16.1\\moq.4.16.1.nupkg.sha512",
+    "C:\\Users\\M.C.C\\.nuget\\packages\\moq.automock\\3.0.0\\moq.automock.3.0.0.nupkg.sha512",
     "C:\\Users\\M.C.C\\.nuget\\packages\\mstest.testframework\\2.2.5\\mstest.testframework.2.2.5.nupkg.sha512",
     "C:\\Users\\M.C.C\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\M.C.C\\.nuget\\packages\\newtonsoft.json\\9.0.1\\newtonsoft.json.9.0.1.nupkg.sha512",

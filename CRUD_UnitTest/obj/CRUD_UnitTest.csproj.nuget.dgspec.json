@@ -137,6 +137,10 @@
               "target": "Package",
               "version": "[4.16.1, )"
             },
+            "Moq.AutoMock": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            },
             "NUnit": {
               "target": "Package",
               "version": "[3.13.2, )"

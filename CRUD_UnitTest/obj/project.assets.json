@@ -705,6 +705,18 @@
           "lib/netstandard2.1/Moq.dll": {}
         }
       },
+      "Moq.AutoMock/3.0.0": {
+        "type": "package",
+        "dependencies": {
+          "Moq": "4.15.1"
+        },
+        "compile": {
+          "lib/netstandard2.0/Moq.AutoMock.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/Moq.AutoMock.dll": {}
+        }
+      },
       "MSTest.TestFramework/2.2.5": {
         "type": "package",
         "dependencies": {
@@ -3096,6 +3108,22 @@
         "moq.4.16.1.nupkg.sha512",
         "moq.nuspec",
         "moq.png"
+      ]
+    },
+    "Moq.AutoMock/3.0.0": {
+      "sha512": "VKWe6BtSiBSf7k8/ei5M37EmCL0nSsOLW8OtopqLfFhEepL4MaMSRvPT2oHLlxOTAnOUsroAGrvjXcETJjDWng==",
+      "type": "package",
+      "path": "moq.automock/3.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE",
+        "lib/net461/Moq.AutoMock.dll",
+        "lib/net461/Moq.AutoMock.xml",
+        "lib/netstandard2.0/Moq.AutoMock.dll",
+        "lib/netstandard2.0/Moq.AutoMock.xml",
+        "moq.automock.3.0.0.nupkg.sha512",
+        "moq.automock.nuspec"
       ]
     },
     "MSTest.TestFramework/2.2.5": {
@@ -6963,6 +6991,7 @@
       "MSTest.TestFramework >= 2.2.5",
       "Microsoft.NET.Test.Sdk >= 16.10.0",
       "Moq >= 4.16.1",
+      "Moq.AutoMock >= 3.0.0",
       "NUnit >= 3.13.2"
     ]
   },
@@ -7020,6 +7049,10 @@
           "Moq": {
             "target": "Package",
             "version": "[4.16.1, )"
+          },
+          "Moq.AutoMock": {
+            "target": "Package",
+            "version": "[3.0.0, )"
           },
           "NUnit": {
             "target": "Package",
