@@ -69,14 +69,16 @@ filterFun(){
  var EmpCountryFilter= this.EmpCountryFilter;
  var EmpListtWithoutFilteration=  this.EmpListtWithoutFilteration.filter(function(el:any){
    return (el.empName.toString().toLowerCase().includes(EmpNameFilter.toString().trim().toLowerCase()) 
-   ) &&
+   ) 
+   &&
    ( el.empTitle.toString().toLowerCase().includes( EmpTitleFilter.toString().trim().toLowerCase())
-   ) &&
-   ( el.empSalary.toString().toLowerCase().includes( EmpSalaryFilter.toString().trim().toLowerCase())
-   ) &&
-   ( el.countryId.toString().toLowerCase().includes( EmpCountryFilter.toString().trim().toLowerCase())
    )
+    &&
+   ( el.empSalary ===  EmpSalaryFilter) 
+   &&
+   ( el.countryId === EmpCountryFilter )
  });
+ this.refreshDbList();
 }
 
 }

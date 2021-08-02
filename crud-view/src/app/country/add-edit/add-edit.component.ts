@@ -29,7 +29,7 @@ var val= {
 
 };
 this.servic.addCountry(val).subscribe(res => {
-  alert(res.toString());
+  alert("Done");
 });
 }
  

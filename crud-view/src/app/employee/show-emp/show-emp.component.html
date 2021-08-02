@@ -53,12 +53,7 @@ data-toggle="modal" data-target="#exampleModal"
             (keyup)="filterFun()"/>
           </div>
           Salary</th>
-        <th>
-          <div class="d-flex flex-row">
-            <input [(ngModel)]="EmpCountryFilter" class="form-control" placeholder="Filter" 
-            (keyup)="filterFun()"/>
-          </div>
-          Country Name</th>
+        <th> Email</th>
         <th>Options</th>
       </tr>
     </thead>
@@ -67,7 +62,7 @@ data-toggle="modal" data-target="#exampleModal"
         <td>{{dataItem.empName}}</td>
         <td>{{dataItem.empTitle}}</td>
         <td>{{dataItem.empSalary}}</td>
-        <td>{{dataItem.countryId}}</td>
+        <td>{{dataItem.empEmail}}</td>
         <td>
           <button type="button" class="btn btn-light mr-1" 
           data-toggle="modal" data-target="#exampleModal"
